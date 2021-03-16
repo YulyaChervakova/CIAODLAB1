@@ -1,3 +1,4 @@
+//Заполнение матрицы
 function matrixArray(rows,columns){
     var arr = new Array();
     for(var i=0; i<rows; i++){
@@ -8,7 +9,7 @@ function matrixArray(rows,columns){
     }
     return arr;
   }
-
+//вывод матрицы 
   function outputTablet (myMatrix,rows,columns){
 var table = "";
 for(var i=0; i<rows; i++){
@@ -23,7 +24,37 @@ for(var i=0; i<rows; i++){
 
   }
 
-  var myMatrix = matrixArray(5,5);
+
+
+  var rows,columns;
+  rows = 5;
+  columns = 5;
+  var myMatrix = matrixArray(rows,columns);//Заполнение матрицы
   var myMatrixbasic = document.getElementById('matrixBasic');
-  myMatrixbasic.innerHTML= outputTablet(myMatrix,5,5);
-  console.log(myMatrix);
+   myMatrixbasic.innerHTML= outputTablet(myMatrix,rows,columns);//Вывод матрицы
+ 
+ 
+ 
+   // для просмотра вида
+ var timeQsort = document.getElementById('timeMatrixQsort');
+ var timeShella = document.getElementById('timeMatrixShella');
+  //время работы 
+var myMatrixQsort = document.getElementById('matrixQsort');
+  var start= new Date().getTime();
+  myMatrixQsort.innerHTML= outputTablet(myMatrix,rows,columns);
+var end = new Date().getTime();
+timeQsort.innerHTML =`<p>Время работы:`+(end - start)+`ms</p>`
+
+
+//время работы 
+var myMatrixShella = document.getElementById('matrixShella');  
+ start= new Date().getTime();
+myMatrixShella.innerHTML= outputTablet(myMatrix,rows,columns);
+ end = new Date().getTime();
+ timeShella.innerHTML =`<p>Время работы:`+(end - start)+`ms</p>`
+  
+  
+  
+  // конец
+ 
+ 

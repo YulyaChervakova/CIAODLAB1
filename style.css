@@ -7,3 +7,17 @@ body{
     text-align: center;
     background-color: rgb(245, 207, 207);
 }
+
+table{
+    background-color: antiquewhite;
+    width: 100%;
+}
+.matrixAll{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+   width: 1000px;
+}
+.matrix-all{
+    margin: 10px;
+}
