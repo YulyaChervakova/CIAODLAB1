@@ -140,7 +140,9 @@ myStandart = JSON.parse(JSON.stringify(myMatrix)); // new array copy;
 start = new Date().getTime();
 for (var i = 0; i < 10000; i++) 
 for (var k = 0; k < rows; k++) {
-  myStandart[k].sort();
+  myStandart[k].sort(function(a,b){ 
+    return a - b
+  });
 }
 end = new Date().getTime();
 myMatrixStandart.innerHTML = outputTablet(myStandart, rows, columns);
