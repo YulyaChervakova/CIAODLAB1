@@ -11,6 +11,11 @@ body{
 table{
     background-color: antiquewhite;
     width: 100%;
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+td{
+    border: 1px solid grey;
 }
 .matrixAll{
     display: flex;
@@ -20,4 +25,9 @@ table{
 }
 .matrix-all{
     margin: 10px;
+}
+
+#matrixStandart{
+    margin: auto;
+    width: 400px;
 }
