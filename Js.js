@@ -89,12 +89,11 @@ function shellSort(arr) {
 
 //Заполнение матрицы
 var rows, columns;
-rows = 5;
-columns = 5;
+rows = 6;
+columns = 6;
 var myMatrix = matrixArray(rows, columns);
 var myMatrixbasic = document.getElementById('matrixBasic');
 myMatrixbasic.innerHTML = outputTablet(myMatrix, rows, columns); //Вывод матрицы
-
 
 // output time 
 var timeQsort = document.getElementById('timeMatrixQsort');
@@ -124,7 +123,7 @@ var myMatrixShella = document.getElementById('matrixShella'); //Shella - для 
 var myShell = '';
 myShell = JSON.parse(JSON.stringify(myMatrix)); // new array copy;
 start = new Date().getTime();
-for (var i = 0; i < 10000; i++) 
+for (var i = 0; i < 10000; i++)
   for (var k = 0; k < rows; k++) {
     myShell[k] = shellSort(myShell[k], 0, columns - 1);
   }
@@ -138,12 +137,68 @@ var myMatrixStandart = document.getElementById('matrixStandart'); //Shella - д�
 var myStandart = '';
 myStandart = JSON.parse(JSON.stringify(myMatrix)); // new array copy;
 start = new Date().getTime();
-for (var i = 0; i < 10000; i++) 
-for (var k = 0; k < rows; k++) {
-  myStandart[k].sort(function(a,b){ 
-    return a - b
-  });
-}
+for (var i = 0; i < 10000; i++)
+  for (var k = 0; k < rows; k++) {
+    myStandart[k].sort(function (a, b) {
+      return a - b
+    });
+  }
 end = new Date().getTime();
 myMatrixStandart.innerHTML = outputTablet(myStandart, rows, columns);
-timeStandart.innerHTML = `<p>Время работы:` + (end - start)/10000 + `ms</p>`
+timeStandart.innerHTML = `<p>Время работы:` + (end - start) / 10000 + `ms</p>`
+
+//Вывод своей матрицы
+newMatrix.onclick = function () {
+  rows = document.getElementById('rows').value;
+  columns = document.getElementById('columns').value;
+  var myMatrix = matrixArray(rows, columns);
+  myMatrixbasic.innerHTML = outputTablet(myMatrix, rows, columns);
+
+
+  // quicksort time, work, output;
+  var myMatrixQsort = document.getElementById('matrixQsort'); ///quicksort - для вывода 
+  var myQsort = '';
+  myQsort = JSON.parse(JSON.stringify(myMatrix)); // new array copy;
+  var start = new Date().getTime();
+  for (var i = 0; i < 10000; i++)
+    for (var k = 0; k < rows; k++) {
+
+      myQsort[k] = quickSort(myQsort[k], 0, columns - 1);
+    }
+  var end = new Date().getTime();
+
+  myMatrixQsort.innerHTML = outputTablet(myQsort, rows, columns); //quickSort -output
+  timeQsort.innerHTML = `<p>Время работы:` + (end - start) / 10000 + `ms</p>`
+
+
+
+  //Shell time, work,output;
+  var myMatrixShella = document.getElementById('matrixShella'); //Shella - для вывода 
+  var myShell = '';
+  myShell = JSON.parse(JSON.stringify(myMatrix)); // new array copy;
+  start = new Date().getTime();
+  for (var i = 0; i < 10000; i++)
+    for (var k = 0; k < rows; k++) {
+      myShell[k] = shellSort(myShell[k], 0, columns - 1);
+    }
+  end = new Date().getTime();
+  myMatrixShella.innerHTML = outputTablet(myShell, rows, columns);
+  timeShella.innerHTML = `<p>Время работы:` + (end - start) / 10000 + `ms</p>`
+
+
+  //Standart sort
+  var myMatrixStandart = document.getElementById('matrixStandart'); //Shella - для вывода 
+  var myStandart = '';
+  myStandart = JSON.parse(JSON.stringify(myMatrix)); // new array copy;
+  start = new Date().getTime();
+  for (var i = 0; i < 10000; i++)
+    for (var k = 0; k < rows; k++) {
+      myStandart[k].sort(function (a, b) {
+        return a - b
+      });
+    }
+  end = new Date().getTime();
+  myMatrixStandart.innerHTML = outputTablet(myStandart, rows, columns);
+  timeStandart.innerHTML = `<p>Время работы:` + (end - start) / 10000 + `ms</p>`
+
+}
